@@ -1,8 +1,15 @@
 module.exports = class Rating {
-  constructor() {
+
+  constructor (scoreA , scoreB , pi) {
+    this.scoreA = scoreA;
+    this.scoreB= scoreB;
+    this.pi = pi | 400;
   }
 
-  resolveE(scoreA , scoreB) {
-    return 1/(1+Math.pow(10,(scoreA - scoreB)/400))
+  resolveE() {
+    return [
+      1/(1+Math.pow(10,(this.scoreA - this.scoreB)/this.pi)),
+      1/(1+Math.pow(10,(this.scoreB - this.scoreA)/this.pi))
+    ]
   }
 };
